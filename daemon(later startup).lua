@@ -1,14 +1,13 @@
 --[RedEar daemon]--
 print("Starting RedEar Daemon...")
-
-if not fs.exists("/Redear/APIs/LogAPI") then
-    print("LogAPI not found. Installing...")
-    shell.run("wget run https://raw.githubusercontent.com/AntonBolte/LogAPI/refs/heads/master/LogAPI_installer.lua /Redear/APIs/LogAPI")
-end
+shell.run("wget run https://raw.githubusercontent.com/AntonBolte/LogAPI/refs/heads/master/LogAPI_installer.lua /Redear/APIs/LogAPI.lua")
 local Log = require("/Redear/APIs/LogAPI")
 Log.SetLogPath("/RedEar/logs/")
 
-LogInfo("RedEar Daemon initializing...", "Daemon")
+Log.Info("RedEar Daemon initializing...", "Daemon")
+
+--Updating/Installing sniffer
+Log.Install("https://raw.githubusercontent.com/AntonBolte/RedEar/refs/heads/master/RedEar/sniffer.lua")
 
 local snifferID = multishell.launchShell("/RedEar/sniffer.lua")
 multishell.setTitle(snifferID, "RE Sniffer")

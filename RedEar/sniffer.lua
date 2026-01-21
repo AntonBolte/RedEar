@@ -1,10 +1,7 @@
-if not fs.exists("LogAPI") then
-    shell.run("wget run https://raw.githubusercontent.com/AntonBolte/LogAPI/refs/heads/master/LogAPI_installer.lua")
-end
+--[RedEar listner/sniffer]--
 
 local Log = require("LogAPI")
 local modem = peripheral.find("modem") or error("No modem found", 0)
-Log.SetLogPath("RedEar/Logs/RedEarLog.txt")
 local dbPath = "RedEar/Database.json"
 
 for i = 65500, 65535 do
@@ -25,7 +22,7 @@ while true do
         msg = message,
     }
 
-    Log.Comment("Storing message in database...\n" .. textutils.serialize(packet))
+    Log.Comment("Storing message in database...")
 
     local db = fs.open(dbPath, "w")
     db.writeLine(textutils.serializeJSON(packet))
