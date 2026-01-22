@@ -17,3 +17,7 @@ multishell.setTitle(daemonID, "RE Daemon")
 
 Log.Info("RedEar Sniffer shell started. Shell ID: " .. snifferID, "Daemon")
 
+while true do
+    
+end
+
