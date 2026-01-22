@@ -1,7 +1,7 @@
 --[RedEar listner/sniffer]--
 local modem = peripheral.find("modem") or error("No modem found", 0)
 local dbPath = "RedEar/Database.json"
-local Log = require("LogAPI")
+local Log = dofile("/LogAPI.lua")
 
 for i = 65500, 65535 do
     modem.open(i)
