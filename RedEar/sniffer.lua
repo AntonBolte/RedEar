@@ -5,7 +5,7 @@ local Log = dofile("/LogAPI.lua")
 
 for i = 65500, 65535 do
     modem.open(i)
-    Log.Comment("Opened port " .. i)
+    Log.Comment("Opened port " .. i, "Sniffer")
 end
 
 while true do
@@ -21,7 +21,7 @@ while true do
         msg = message,
     }
 
-    Log.Comment("Storing message in database...")
+    Log.Comment("Storing message in database...", "Sniffer")
 
     local db = fs.open(dbPath, "w")
     db.writeLine(textutils.serializeJSON(packet))
